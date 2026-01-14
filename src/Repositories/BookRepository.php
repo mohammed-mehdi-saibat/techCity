@@ -46,4 +46,27 @@ class BookRepository
 
         return $book;
     }
+
+    public function search(string $query): array
+    {
+        $searchTerm = "%$query%";
+
+        $sql = "SELECT DISTINCT b.* FROM books b
+            LEFT JOIN book_authors ba ON b.isbn = ba.isbn
+            LEFT JOIN authors a ON ba.author_id = a.id
+            WHERE b.title LIKE ? 
+            OR b.category LIKE ? 
+            OR a.name LIKE ?";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$searchTerm, $searchTerm, $searchTerm]);
+        $rows = $stmt->fetchAll();
+
+        $results = [];
+        foreach ($rows as $row) {
+            $results[] = $this->findByIsbn($row['isbn']);
+        }
+
+        return $results;
+    }
 }
