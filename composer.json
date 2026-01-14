@@ -1,0 +1,17 @@
+{
+    "name": "ycode/library",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ycode\\Library\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mohammed mehdi",
+            "email": "mohammedmehdisaibat@gmail.com"
+        }
+    ],
+    "require": {}
+}
