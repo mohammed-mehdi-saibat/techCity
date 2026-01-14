@@ -38,4 +38,14 @@ class Book
     {
         return $this->status;
     }
+
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+    public function getPublicationYear(): int
+    {
+        return $this->publicationYear;
+    }
 }
