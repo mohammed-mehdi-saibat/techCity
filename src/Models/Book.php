@@ -48,4 +48,9 @@ class Book
     {
         return $this->publicationYear;
     }
+
+    public function isAvailable(): bool
+    {
+        return $this->status === 'Available';
+    }
 }
